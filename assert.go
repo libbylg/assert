@@ -2,9 +2,9 @@ package assert
 
 import (
 	"reflect"
+	"regexp"
 	"runtime"
 	"testing"
-	"regexp"
 )
 
 // Assert is the wrapper of testing.T
@@ -37,6 +37,7 @@ func (a *Assert) NotEqual(message string, exp, got interface{}) {
 		a.T.FailNow()
 	}
 }
+
 //
 //// Match is used to check the got is match to the regular expression of exp.
 //func (a *Assert) Match(message string, exp string, got string) {
@@ -96,4 +97,3 @@ func (a *Assert) NoPanic(message string, fn func()) {
 
 	fn()
 }
-
