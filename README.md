@@ -23,11 +23,29 @@ import "github.com/libbylg/assert"
 expect := assert.New(t)
 ```
 
+or
+
+```go
+expect := &assert.Assert{t}
+```
+
 - Step 3: Use the `Equal`,`NotEqual`,`True`,`False`,`Panic`,`NoPanic` function to check your result.
 
 ```go
 expect.Equal("We expect equal", "123", "456")
 ```
+
+# Function
+
+- `Equal()` `NotEqual()` : check the two value is equal or not
+
+- `True()` `False()` : check the value is true of false
+
+- `Panic()` `NoPanic()` : check the function is panic or not panic
+
+# Examples
+
+See [assert_test.go](assert_test.go)
 
 # Notice
 
