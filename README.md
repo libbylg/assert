@@ -1,4 +1,4 @@
-# assert
+# Overview
 
 [![Build Status](https://travis-ci.org/libbylg/assert.svg?branch=master)](https://travis-ci.org/libbylg/assert)
 [![GoDoc](https://godoc.org/github.com/libbylg/assert?status.svg)](https://godoc.org/github.com/libbylg/assert)
@@ -6,3 +6,32 @@
 [![License](https://img.shields.io/badge/license-New%20BSD-yellow.svg?style=flat)](LICENSE)
 [![codecov](https://codecov.io/gh/libbylg/assert/branch/master/graph/badge.svg)](https://codecov.io/gh/libbylg/assert)
 [![goreport](https://www.goreportcard.com/badge/github.com/libbylg/assert)](https://www.goreportcard.com/report/github.com/libbylg/assert)
+
+Package assert is a wrapper of testing.T, but extends the asserts(or say expect) method.
+
+# Sample usage
+
+- Step 1: Import the assert package.
+
+```go
+import "github.com/libbylg/assert"
+```
+
+- Step 2: Create a new Assert object at the begin of the test function.
+
+```go
+expect := assert.New(t)
+```
+
+- Step 3: Use the `Equal`,`NotEqual`,`True`,`False`,`Panic`,`NoPanic` function to check your result.
+
+```go
+expect.Equal("We expect equal", "123", "456")
+```
+
+# Notice
+
+Maybe you found that the parameter `message` of the assert functions looks odd.
+That I planned for it. That because I'm from java. And I found that many people like to
+ignore the `message` parameter in the unit test code. But that made the code is hard to maintained.
+So, after I'm in go, I decide to force the people give a message for assert function.
