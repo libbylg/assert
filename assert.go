@@ -2,7 +2,6 @@ package assert
 
 import (
 	"reflect"
-	"regexp"
 	"runtime"
 	"testing"
 )
