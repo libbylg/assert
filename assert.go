@@ -63,7 +63,7 @@ func (a *Assert) True(message string, got bool) {
 	}
 }
 
-// True is used to check the got be false.
+// False is used to check the got be false.
 func (a *Assert) False(message string, got bool) {
 	result := reflect.DeepEqual(false, got)
 	if !result {
