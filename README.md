@@ -7,7 +7,7 @@
 [![codecov](https://codecov.io/gh/libbylg/assert/branch/master/graph/badge.svg)](https://codecov.io/gh/libbylg/assert)
 [![goreport](https://www.goreportcard.com/badge/github.com/libbylg/assert)](https://www.goreportcard.com/report/github.com/libbylg/assert)
 
-Package assert is a wrapper of testing.T, but extends the asserts(or say expect) method.
+Package assert is a rich assertor and extensiable assert tools.
 
 # Sample usage
 
