@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"reflect"
 	"regexp"
-	"testing"
 	"runtime"
+	"testing"
 )
 
 type Assertor interface {
@@ -21,7 +21,7 @@ func (r *Equal) Assert() error {
 	if !reflect.DeepEqual(r.Expect, r.Actual) {
 		return fmt.Errorf("Expect:%v, Actual:%v", r.Expect, r.Actual)
 	}
-	
+
 	return nil
 }
 
@@ -34,7 +34,7 @@ func (r *NotEqual) Assert() error {
 	if reflect.DeepEqual(r.Expect, r.Actual) {
 		return fmt.Errorf("Expect:%v, Actual:%v", r.Expect, r.Actual)
 	}
-	
+
 	return nil
 }
 
@@ -46,7 +46,7 @@ func (r *True) Assert() error {
 	if true != r.Actual {
 		return fmt.Errorf("Expect:%v, Actual:%v", true, r.Actual)
 	}
-	
+
 	return nil
 }
 
@@ -58,7 +58,7 @@ func (r *False) Assert() error {
 	if false != r.Actual {
 		return fmt.Errorf("Expect:%v, Actual:%v", false, r.Actual)
 	}
-	
+
 	return nil
 }
 
@@ -69,7 +69,7 @@ type Panic struct {
 func (r *Panic) Assert() (err error) {
 	// 先对 err 赋值,占据一个位置
 	err = fmt.Errorf("")
-	
+
 	// 如果fn抛出panic,那么逻辑会进入这里
 	defer func() {
 		recover()
@@ -77,9 +77,9 @@ func (r *Panic) Assert() (err error) {
 			err = fmt.Errorf("Expect panic, but no panic catched")
 		}
 	}()
-	
+
 	r.F()
-	
+
 	// 如果程序的逻辑走到这里说明没有碰到任何panic
 	err = nil
 	return
@@ -92,7 +92,7 @@ type NoPanic struct {
 func (r *NoPanic) Assert() (err error) {
 	// 先对 err 赋值,占据一个位置
 	err = fmt.Errorf("")
-	
+
 	// 如果fn抛出panic,那么逻辑会进入这里
 	defer func() {
 		ret := recover()
@@ -100,9 +100,9 @@ func (r *NoPanic) Assert() (err error) {
 			err = fmt.Errorf("Expect no panic, but panic catched:%v", ret)
 		}
 	}()
-	
+
 	r.F()
-	
+
 	err = nil
 	return
 }
@@ -117,7 +117,7 @@ func (r *Match) Assert() error {
 	if !regex.MatchString(r.Actual) {
 		return fmt.Errorf("Expect match:`%s`, but actual `%s`", r.Regexp, r.Actual)
 	}
-	
+
 	return nil
 }
 
@@ -131,7 +131,7 @@ func (r *NotMatch) Assert() error {
 	if regex.MatchString(r.Actual) {
 		return fmt.Errorf("Expect not match:`%s`, but actual `%s`", r.Regexp, r.Actual)
 	}
-	
+
 	return nil
 }
 
@@ -143,7 +143,7 @@ func (r *Nil) Assert() error {
 	if nil != r.Actual {
 		return fmt.Errorf("Expect nil, but actual not nil:%v", r.Actual)
 	}
-	
+
 	return nil
 }
 
@@ -155,7 +155,7 @@ func (r *NotNil) Assert() error {
 	if nil != r.Actual {
 		return fmt.Errorf("Expect not nil, but actual nil")
 	}
-	
+
 	return nil
 }
 
