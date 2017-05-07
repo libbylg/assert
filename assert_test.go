@@ -45,7 +45,22 @@ func TestAssert_NoPanic_Use_Orign(t *testing.T) {
 	expect.Assert("Expect-the func-do-not-throw-a-panic", &NoPanic{func() { throwPanic() }})
 }
 
-func TestAssert_NoEqual_Use_Orign(t *testing.T) {
+func TestAssert_NoEqual_Use_Orign1(t *testing.T) {
 	assert, _ := New(t)
 	assert.Assert("Expect-not-equal", &NotEqual{"444", "444"})
+}
+
+func TestAssert_NoEqual_Use_Orign2(t *testing.T) {
+	assert, _ := New(t)
+	assert.Assert(&NotEqual{"444", "444"}, "Expect-not-equal")
+}
+
+func TestAssert_NoEqual_Use_Orign3(t *testing.T) {
+	assert, _ := New(t)
+	assert.Assert(&NotEqual{444, 444, "Expect-not-equal"})
+}
+
+func TestAssert_NoEqual_Use_Orign4(t *testing.T) {
+	assert, _ := New(t)
+	assert(&NotEqual{444, 444, "Expect-not-equal"})
 }

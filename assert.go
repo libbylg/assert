@@ -233,13 +233,6 @@ func (a *Assert) NotNil(message string, got interface{}) {
 	a.AssertInner(message, &NotNil{Actual: got}, 2)
 }
 
-func (a *Assert) In(message string, got interface{}) {
-}
-
-func (a *Assert) OneOf() {
-
-}
-
 func (a *Assert) Empty(message string, got interface{}) {
 
 }
